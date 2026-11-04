@@ -13,3 +13,4 @@ venv/
 data_backup/
 *.key
 *.db
+.impeccable/
