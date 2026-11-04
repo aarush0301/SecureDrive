@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block body %}
+  <h2>Your audit trail</h2>
+  <p><a href="{{ url_for('home') }}">&larr; Back to my files</a></p>
+
+  <p>Log chain integrity:
+    {% if chain_ok %}
+      <b style="color: green;">✔ verified (no entries edited or removed)</b>
+    {% else %}
+      <b style="color: darkred;">✘ tampering detected at entry #{{ bad_id }}</b>
+    {% endif %}
+  </p>
+
+  <table border="1" cellpadding="6">
+    <tr><th>Time</th><th>Action</th><th>File</th><th>IP</th><th>Status</th><th>Detail</th></tr>
+    {% for r in rows %}
+      <tr>
+        <td>{{ r.ts }}</td>
+        <td>{{ r.action }}</td>
+        <td>{{ r.filename or '' }}</td>
+        <td>{{ r.ip }}</td>
+        {% if r.status == 'SUCCESS' %}
+          <td style="color: green;">{{ r.status }}</td>
+        {% else %}
+          <td style="color: darkred;">{{ r.status }}</td>
+        {% endif %}
+        <td>{{ r.detail }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

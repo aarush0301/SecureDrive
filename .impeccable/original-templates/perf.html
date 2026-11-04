@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block body %}
+  <p><a href="{{ url_for('home') }}">&larr; Back to my files</a></p>
+  <h2>Performance: AES-256-GCM encryption and decryption</h2>
+  <p>Measured live on this server (median of 3 runs per size, random data).</p>
+  <table border="1" cellpadding="6">
+    <tr><th>Size (MB)</th><th>Encrypt (ms)</th><th>Decrypt (ms)</th><th>Encrypt (MB/s)</th><th>Decrypt (MB/s)</th></tr>
+    {% for r in rows %}
+      <tr><td>{{ r.mb }}</td><td>{{ '%.2f' % r.enc_ms }}</td><td>{{ '%.2f' % r.dec_ms }}</td>
+          <td>{{ '%.1f' % r.enc_mbps }}</td><td>{{ '%.1f' % r.dec_mbps }}</td></tr>
+    {% endfor %}
+  </table>
+  <h3>Graphs</h3>
+  {{ chart_time | safe }}
+  {{ chart_speed | safe }}
+  <p><small>Time grows roughly in proportion to size; speed stays roughly flat. That is the cost
+     of security: encryption adds a small, predictable per-byte cost.</small></p>
+{% endblock %}

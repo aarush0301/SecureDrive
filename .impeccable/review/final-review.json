@@ -1,0 +1,13 @@
+{
+  "initial_review": "Independent impeccable finish reviewer",
+  "initial_disposition": "fix",
+  "followup": "Reviewer could not finish the verdict pass because the workspace spending cap was reached. The primary agent performed the documented degraded verdict pass from the same recaptured evidence.",
+  "verdict": [
+    {"finding": "Compact table overflow affordances", "status": "resolved", "evidence": "mobile.png, tablet.png and audit-mobile.png show explicit horizontal-scroll instructions; app.css themes scrollbars and preserves keyboard focus."},
+    {"finding": "Mobile chart lettering", "status": "resolved", "evidence": "performance-mobile.png and performance-mobile-scrolled.png show readable plot lettering, accessible full plots and legends. fix-checks.json records minimum rendered lettering 12.765625px and no page overflow."}
+  ],
+  "remaining": "clear",
+  "disposition": "ship",
+  "scope": "Scores the two material fixes from the independent review, not a new independent full-surface approval.",
+  "documentation": "DESIGN.md and .impeccable/design.json were extracted locally from the shipped styles after the reviewer became unavailable."
+}

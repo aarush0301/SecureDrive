@@ -1,0 +1,15 @@
+data/
+certs/
+signatures/
+__pycache__/
+*.pyc
+*.pcap
+*.pcapng
+performance_results.csv
+benchmark_results.csv
+transfer_results.csv
+venv/
+.venv/
+data_backup/
+*.key
+*.db

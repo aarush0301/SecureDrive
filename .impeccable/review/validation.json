@@ -1,0 +1,32 @@
+{
+  "scope": "Presentation-only SecureDrive redesign",
+  "environment": "Isolated copy of the unchanged Flask backend with synthetic accounts and files; the user's data directory was not used",
+  "security_suite": {
+    "command": "venv/Scripts/python.exe .impeccable/preview/test_security.py --url http://127.0.0.1:5001",
+    "passed": 15,
+    "total": 15,
+    "notes": "Existing test suite; oversize-upload check passed via its accepted connection-closed branch. This verifies regression behavior and is not a new security audit."
+  },
+  "browser": {
+    "engine": "Local headless Chromium",
+    "primary_viewports": [1440, 1280, 768, 390],
+    "additional_minimum_width": 320,
+    "layout_states_checked": 22,
+    "interaction_checks_passed": 12,
+    "additional_states": ["login failure", "registration validation", "share feedback", "long filename", "integrity-blocked response"],
+    "layout_evidence": "browser-checks.json",
+    "interaction_evidence": "interaction-checks.json"
+  },
+  "templates": "All Jinja templates compiled successfully",
+  "detector": {
+    "invocation": "impeccable detect --json templates static/app.css",
+    "findings": [],
+    "limitation": "The Jinja stylesheet URL could not be automatically resolved by the detector; the stylesheet was also supplied explicitly."
+  },
+  "unchanged_backend_sha256": {
+    "app.py": "5460B6239310F2716AAAF8A10F149C8C8AF3A4A659755B8208DAB45E27CEE9E2",
+    "crypto_utils.py": "5C848DF1CB386CE0E2270243235AE5BA032120A2B28FC4C5D11261AD6CA46384",
+    "lab_core.py": "DB387190BA81B41C28646A7373C27FAD7110A86206172EA6645A6F82F26EA1CF"
+  },
+  "assets": "Local CSS and SVG only. No external runtime fonts, scripts, or image requests added."
+}

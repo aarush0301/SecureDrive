@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block body %}
+{% include "auth_intro.html" %}
+<section class="auth-form-region"><div class="auth-form-content"><span class="auth-form-icon">{{ icon('shield') }}</span><h1>Create your account.</h1><p class="auth-subtitle">A workspace for your files and their cryptographic proof.</p>
+<form method="post" class="auth-form"><input type="hidden" name="csrf" value="{{ csrf_token }}"><div class="field"><label for="username">Username</label><input id="username" name="username" placeholder="Choose a username" autocomplete="username" aria-describedby="username-help" required><p id="username-help" class="field-help">3–20 letters, digits, or underscores.</p></div><div class="field"><label for="password">Password</label><input id="password" name="password" type="password" placeholder="Create a password" autocomplete="new-password" aria-describedby="password-help" required><p id="password-help" class="field-help">Use 8–72 characters.</p></div><button class="button primary">Register {{ icon('arrow-right') }}</button></form>
+<p class="auth-switch">Already registered? <a href="{{ url_for('login') }}">Log in</a></p><p class="auth-footnote">{{ icon('shield') }} Your files are encrypted before they are stored.</p></div></section>
+{% endblock %}

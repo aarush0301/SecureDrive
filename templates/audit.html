@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block body %}
+<a class="back-link" href="{{ url_for('home') }}">{{ icon('arrow-left') }} Back to my files</a>
+<div class="page-heading"><div><h1>Your audit trail</h1><p>A record of account activity, file operations, and security events.</p></div><span class="count-label">{{ rows | length }} entries</span></div>
+<div class="status-banner {{ 'success' if chain_ok else 'danger' }}" role="status">{{ icon('shield-check' if chain_ok else 'alert') }}<div><strong>Log chain integrity: {{ 'verified' if chain_ok else 'tampering detected' }}</strong><p>{% if chain_ok %}No entries edited or removed.{% else %}Tampering detected at entry #{{ bad_id }}.{% endif %}</p></div></div>
+<section class="panel"><div class="panel-heading"><h2>Activity log</h2><span class="muted">Most recent first</span></div><p class="table-hint">Scroll horizontally to see all event details. {{ icon('arrow-right') }}</p><div class="table-scroll" role="region" aria-label="Audit events" tabindex="0"><table class="audit-table"><thead><tr><th scope="col">Time</th><th scope="col">Action</th><th scope="col">File</th><th scope="col">IP</th><th scope="col">Status</th><th scope="col">Detail</th></tr></thead><tbody>
+{% for r in rows %}<tr><td class="date-cell">{{ r.ts }}</td><td><code>{{ r.action }}</code></td><td class="break-word">{{ r.filename or '' }}</td><td class="nowrap"><code>{{ r.ip }}</code></td><td><span class="status-badge {{ 'success' if r.status == 'SUCCESS' else 'danger' }}">{{ r.status }}</span></td><td class="audit-detail">{{ r.detail }}</td></tr>{% else %}<tr><td colspan="6" class="empty-table">No activity to display yet.</td></tr>{% endfor %}
+</tbody></table></div></section>
+{% endblock %}

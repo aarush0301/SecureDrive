@@ -1,0 +1,338 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-30T19:40:46.507Z",
+  "title": "Design System: SecureDrive",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Primary",
+        "tonalRamp": [
+          "oklch(15.00% 0.2009 262.76)",
+          "oklch(26.43% 0.2009 262.76)",
+          "oklch(37.86% 0.2009 262.76)",
+          "oklch(49.29% 0.2009 262.76)",
+          "oklch(60.71% 0.2009 262.76)",
+          "oklch(72.14% 0.2009 262.76)",
+          "oklch(83.57% 0.2009 262.76)",
+          "oklch(95.00% 0.2009 262.76)"
+        ]
+      },
+      "primary-hover": {
+        "role": "primary",
+        "displayName": "Primary Hover",
+        "tonalRamp": [
+          "oklch(15.00% 0.1845 263.01)",
+          "oklch(26.43% 0.1845 263.01)",
+          "oklch(37.86% 0.1845 263.01)",
+          "oklch(49.29% 0.1845 263.01)",
+          "oklch(60.71% 0.1845 263.01)",
+          "oklch(72.14% 0.1845 263.01)",
+          "oklch(83.57% 0.1845 263.01)",
+          "oklch(95.00% 0.1845 263.01)"
+        ]
+      },
+      "primary-soft": {
+        "role": "primary",
+        "displayName": "Primary Soft",
+        "tonalRamp": [
+          "oklch(15.00% 0.0173 264.49)",
+          "oklch(26.43% 0.0173 264.49)",
+          "oklch(37.86% 0.0173 264.49)",
+          "oklch(49.29% 0.0173 264.49)",
+          "oklch(60.71% 0.0173 264.49)",
+          "oklch(72.14% 0.0173 264.49)",
+          "oklch(83.57% 0.0173 264.49)",
+          "oklch(95.00% 0.0173 264.49)"
+        ]
+      },
+      "background": {
+        "role": "neutral",
+        "displayName": "Background",
+        "tonalRamp": [
+          "oklch(15.00% 0.0057 264.53)",
+          "oklch(26.43% 0.0057 264.53)",
+          "oklch(37.86% 0.0057 264.53)",
+          "oklch(49.29% 0.0057 264.53)",
+          "oklch(60.71% 0.0057 264.53)",
+          "oklch(72.14% 0.0057 264.53)",
+          "oklch(83.57% 0.0057 264.53)",
+          "oklch(95.00% 0.0057 264.53)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "tonalRamp": [
+          "oklch(15.00% 0.0000 89.88)",
+          "oklch(26.43% 0.0000 89.88)",
+          "oklch(37.86% 0.0000 89.88)",
+          "oklch(49.29% 0.0000 89.88)",
+          "oklch(60.71% 0.0000 89.88)",
+          "oklch(72.14% 0.0000 89.88)",
+          "oklch(83.57% 0.0000 89.88)",
+          "oklch(95.00% 0.0000 89.88)"
+        ]
+      },
+      "surface-soft": {
+        "role": "neutral",
+        "displayName": "Surface Soft",
+        "tonalRamp": [
+          "oklch(15.00% 0.0045 258.32)",
+          "oklch(26.43% 0.0045 258.32)",
+          "oklch(37.86% 0.0045 258.32)",
+          "oklch(49.29% 0.0045 258.32)",
+          "oklch(60.71% 0.0045 258.32)",
+          "oklch(72.14% 0.0045 258.32)",
+          "oklch(83.57% 0.0045 258.32)",
+          "oklch(95.00% 0.0045 258.32)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(15.00% 0.0465 256.58)",
+          "oklch(26.43% 0.0465 256.58)",
+          "oklch(37.86% 0.0465 256.58)",
+          "oklch(49.29% 0.0465 256.58)",
+          "oklch(60.71% 0.0465 256.58)",
+          "oklch(72.14% 0.0465 256.58)",
+          "oklch(83.57% 0.0465 256.58)",
+          "oklch(95.00% 0.0465 256.58)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(15.00% 0.0379 256.82)",
+          "oklch(26.43% 0.0379 256.82)",
+          "oklch(37.86% 0.0379 256.82)",
+          "oklch(49.29% 0.0379 256.82)",
+          "oklch(60.71% 0.0379 256.82)",
+          "oklch(72.14% 0.0379 256.82)",
+          "oklch(83.57% 0.0379 256.82)",
+          "oklch(95.00% 0.0379 256.82)"
+        ]
+      },
+      "border": {
+        "role": "neutral",
+        "displayName": "Border",
+        "tonalRamp": [
+          "oklch(15.00% 0.0156 257.20)",
+          "oklch(26.43% 0.0156 257.20)",
+          "oklch(37.86% 0.0156 257.20)",
+          "oklch(49.29% 0.0156 257.20)",
+          "oklch(60.71% 0.0156 257.20)",
+          "oklch(72.14% 0.0156 257.20)",
+          "oklch(83.57% 0.0156 257.20)",
+          "oklch(95.00% 0.0156 257.20)"
+        ]
+      },
+      "navy": {
+        "role": "neutral",
+        "displayName": "Navy",
+        "tonalRamp": [
+          "oklch(15.00% 0.0493 256.35)",
+          "oklch(26.43% 0.0493 256.35)",
+          "oklch(37.86% 0.0493 256.35)",
+          "oklch(49.29% 0.0493 256.35)",
+          "oklch(60.71% 0.0493 256.35)",
+          "oklch(72.14% 0.0493 256.35)",
+          "oklch(83.57% 0.0493 256.35)",
+          "oklch(95.00% 0.0493 256.35)"
+        ]
+      },
+      "navy-soft": {
+        "role": "neutral",
+        "displayName": "Navy Soft",
+        "tonalRamp": [
+          "oklch(15.00% 0.0611 255.62)",
+          "oklch(26.43% 0.0611 255.62)",
+          "oklch(37.86% 0.0611 255.62)",
+          "oklch(49.29% 0.0611 255.62)",
+          "oklch(60.71% 0.0611 255.62)",
+          "oklch(72.14% 0.0611 255.62)",
+          "oklch(83.57% 0.0611 255.62)",
+          "oklch(95.00% 0.0611 255.62)"
+        ]
+      },
+      "nav-text": {
+        "role": "neutral",
+        "displayName": "Nav Text",
+        "tonalRamp": [
+          "oklch(15.00% 0.0368 257.40)",
+          "oklch(26.43% 0.0368 257.40)",
+          "oklch(37.86% 0.0368 257.40)",
+          "oklch(49.29% 0.0368 257.40)",
+          "oklch(60.71% 0.0368 257.40)",
+          "oklch(72.14% 0.0368 257.40)",
+          "oklch(83.57% 0.0368 257.40)",
+          "oklch(95.00% 0.0368 257.40)"
+        ]
+      },
+      "success": {
+        "role": "neutral",
+        "displayName": "Success",
+        "tonalRamp": [
+          "oklch(15.00% 0.1001 160.94)",
+          "oklch(26.43% 0.1001 160.94)",
+          "oklch(37.86% 0.1001 160.94)",
+          "oklch(49.29% 0.1001 160.94)",
+          "oklch(60.71% 0.1001 160.94)",
+          "oklch(72.14% 0.1001 160.94)",
+          "oklch(83.57% 0.1001 160.94)",
+          "oklch(95.00% 0.1001 160.94)"
+        ]
+      },
+      "success-soft": {
+        "role": "neutral",
+        "displayName": "Success Soft",
+        "tonalRamp": [
+          "oklch(15.00% 0.0148 158.25)",
+          "oklch(26.43% 0.0148 158.25)",
+          "oklch(37.86% 0.0148 158.25)",
+          "oklch(49.29% 0.0148 158.25)",
+          "oklch(60.71% 0.0148 158.25)",
+          "oklch(72.14% 0.0148 158.25)",
+          "oklch(83.57% 0.0148 158.25)",
+          "oklch(95.00% 0.0148 158.25)"
+        ]
+      },
+      "danger": {
+        "role": "neutral",
+        "displayName": "Danger",
+        "tonalRamp": [
+          "oklch(15.00% 0.1688 20.25)",
+          "oklch(26.43% 0.1688 20.25)",
+          "oklch(37.86% 0.1688 20.25)",
+          "oklch(49.29% 0.1688 20.25)",
+          "oklch(60.71% 0.1688 20.25)",
+          "oklch(72.14% 0.1688 20.25)",
+          "oklch(83.57% 0.1688 20.25)",
+          "oklch(95.00% 0.1688 20.25)"
+        ]
+      },
+      "danger-soft": {
+        "role": "neutral",
+        "displayName": "Danger Soft",
+        "tonalRamp": [
+          "oklch(15.00% 0.0152 12.42)",
+          "oklch(26.43% 0.0152 12.42)",
+          "oklch(37.86% 0.0152 12.42)",
+          "oklch(49.29% 0.0152 12.42)",
+          "oklch(60.71% 0.0152 12.42)",
+          "oklch(72.14% 0.0152 12.42)",
+          "oklch(83.57% 0.0152 12.42)",
+          "oklch(95.00% 0.0152 12.42)"
+        ]
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "state-transition",
+        "value": "160ms ease-out",
+        "purpose": "Color and border state transitions; removed under prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide",
+        "value": "1600px"
+      },
+      {
+        "name": "compact-desktop",
+        "value": "1200px"
+      },
+      {
+        "name": "top-navigation",
+        "value": "900px"
+      },
+      {
+        "name": "phone",
+        "value": "650px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "html": "<button class=\"ds-primary\">Encrypt &amp; upload</button>",
+      "css": ".ds-primary{font:600 12px 'Segoe UI',sans-serif;border-radius:7px;padding:9px 15px;min-height:42px;cursor:pointer;transition:background-color 160ms ease-out;background:var(--blue,#245edb);color:#fff;border:1px solid transparent}.ds-primary:hover{background:var(--blue-hover,#194bbb)}.ds-primary:active{background:#123b9b}.ds-primary:focus-visible{outline:3px solid #5587ed;outline-offset:3px}"
+    },
+    {
+      "name": "Secondary button",
+      "kind": "button",
+      "html": "<button class=\"ds-secondary\">Share</button>",
+      "css": ".ds-secondary{font:600 12px 'Segoe UI',sans-serif;border-radius:7px;padding:9px 15px;min-height:42px;cursor:pointer;transition:background-color 160ms ease-out;background:#fff;color:#325586;border:1px solid #c9d6e8}.ds-secondary:hover{background:#edf3ff;border-color:#a6bde0}.ds-secondary:focus-visible{outline:3px solid #5587ed;outline-offset:3px}"
+    },
+    {
+      "name": "Delete button",
+      "kind": "button",
+      "html": "<button class=\"ds-delete\">Delete</button>",
+      "css": ".ds-delete{font:600 12px 'Segoe UI',sans-serif;border-radius:7px;padding:9px 15px;min-height:42px;cursor:pointer;transition:background-color 160ms ease-out;background:transparent;color:#b5303d;border:1px solid transparent}.ds-delete:hover{background:#fff1f2}.ds-delete:focus-visible{outline:3px solid #5587ed;outline-offset:3px}"
+    },
+    {
+      "name": "Text field",
+      "kind": "input",
+      "html": "<label class=\"ds-field\">Username<input class=\"ds-input\" placeholder=\"Enter your username\"></label>",
+      "css": ".ds-field{display:grid;gap:8px;font:600 12px 'Segoe UI',sans-serif;color:#18283e}.ds-input{font:400 14px 'Segoe UI',sans-serif;padding:10px 12px;background:#fff;color:#18283e;border:1px solid #c7d2e1;border-radius:7px;caret-color:#245edb}.ds-input:hover{border-color:#8d9fb9}.ds-input:focus{border-color:#245edb}.ds-input:focus-visible{outline:3px solid #5587ed;outline-offset:3px}"
+    },
+    {
+      "name": "Navigation item",
+      "kind": "nav",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-active\" href=\"#\" aria-current=\"page\">My files</a><a href=\"#\">Audit trail</a></nav>",
+      "css": ".ds-nav{display:grid;gap:7px;padding:18px;background:#13243b;font:500 14px 'Segoe UI',sans-serif}.ds-nav a{padding:11px 14px;min-height:24px;color:#b8c8df;border-radius:7px;text-decoration:none}.ds-nav a:hover{background:#1e3553;color:#fff}.ds-nav a.ds-active{background:#24446e;color:#fff}.ds-nav a:focus-visible{outline:3px solid #5587ed;outline-offset:3px}"
+    },
+    {
+      "name": "Result badge",
+      "kind": "chip",
+      "refersTo": "status-success",
+      "html": "<span class=\"ds-status\">SUCCESS</span>",
+      "css": ".ds-status{display:inline-block;font:600 10px 'Segoe UI',sans-serif;padding:4px 8px;border-radius:5px;color:var(--green,#16704c);background:var(--green-soft,#edf8f1)}"
+    },
+    {
+      "name": "Content panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "html": "<section class=\"ds-panel\"><h2>Upload a file</h2><p>Choose a file to encrypt and store in your drive.</p></section>",
+      "css": ".ds-panel{padding:22px 24px;border:1px solid #dce3ed;border-radius:12px;background:#fff;font:14px/1.55 'Segoe UI',sans-serif;color:#18283e}.ds-panel h2{margin:0 0 8px;font-size:17px;font-weight:650}.ds-panel p{margin:0;color:#5c6b80;font-size:12px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Light security workspace",
+    "overview": "The user selected white surfaces, blue actions, and a familiar dashboard for a security project demonstration. The interface keeps file operations direct and makes cryptographic evidence easy to read.",
+    "keyCharacteristics": [
+      "White work areas against a cool pale background.",
+      "Deep navy navigation and blue primary actions.",
+      "Real checks determine result colors.",
+      "Familiar forms, readable evidence, and responsive tables."
+    ],
+    "rules": [
+      {
+        "name": "The Evidence Rule",
+        "body": "A security mechanism label names implemented technology; a verified status requires a result from the server.",
+        "section": "colors"
+      },
+      {
+        "name": "The Readable Data Rule",
+        "body": "Preserve full cryptographic values with wrapping. Mobile chart lettering keeps its scale inside a scrollable plot instead of shrinking to fit.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "Do reuse the shared stylesheet and SVG icon macro.",
+      "Do preserve visible labels, keyboard focus, and explicit compact-table scrolling cues.",
+      "Do derive file counts, statuses, and measurements from real application values."
+    ],
+    "donts": [
+      "Don't add unsupported certification or end-to-end encryption claims.",
+      "Don't replace working forms, routes, field names, CSRF tokens, or security checks as part of styling.",
+      "Don't add external UI dependencies for these existing components."
+    ]
+  }
+}

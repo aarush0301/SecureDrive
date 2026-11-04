@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block body %}
+  <h2>Welcome, {{ username }}</h2>
+  <form method="post" action="{{ url_for('logout') }}">
+    <input type="hidden" name="csrf" value="{{ csrf_token }}">
+    <button>Log out</button>
+  </form>
+    <p><a href="{{ url_for('audit') }}">View audit log</a> &middot;
+     <a href="{{ url_for('lab') }}">Crypto Lab (text)</a> &middot;
+     <a href="{{ url_for('perf') }}">Performance graphs</a></p>
+
+  <h3>Upload a file</h3>
+  <form method="post" action="{{ url_for('upload') }}" enctype="multipart/form-data">
+    <input type="hidden" name="csrf" value="{{ csrf_token }}">
+    <input type="file" name="file" required>
+    <button>Encrypt &amp; upload</button>
+  </form>
+  <p>Allowed: {{ exts }} &middot; max {{ max_mb }} MB</p>
+
+  <h3>My files</h3>
+  {% if files %}
+    <table border="1" cellpadding="6">
+      <tr><th>Name</th><th>Size</th><th>SHA-256</th><th>Uploaded</th><th>Inspect</th><th>Share with</th><th></th></tr>
+      {% for f in files %}
+        <tr>
+          <td><a href="{{ url_for('download', file_id=f.id) }}">{{ f.orig_name }}</a></td>
+          <td>{{ (f.size / 1024) | round(1) }} KB</td>
+          <td title="{{ f.sha256 }}">{{ f.sha256[:12] if f.sha256 else '-' }}</td>
+          <td>{{ f.uploaded_at }}</td>
+          <td><a href="{{ url_for('inspect_file', file_id=f.id) }}">Plain vs cipher</a></td>
+          <td>
+            <form method="post" action="{{ url_for('share', file_id=f.id) }}">
+              <input type="hidden" name="csrf" value="{{ csrf_token }}">
+              <input name="target" placeholder="username" size="10" required>
+              <button>Share</button>
+            </form>
+          </td>
+          <td>
+            <form method="post" action="{{ url_for('delete', file_id=f.id) }}"
+                  onsubmit="return confirm('Delete this file permanently?')">
+              <input type="hidden" name="csrf" value="{{ csrf_token }}">
+              <button>Delete</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>No files yet.</p>
+  {% endif %}
+
+  <h3>Shared with me</h3>
+  {% if shared %}
+    <table border="1" cellpadding="6">
+     <tr><th>Name</th><th>Owner</th><th>Size</th><th>Inspect</th></tr>
+      {% for f in shared %}
+        <tr>
+          <td><a href="{{ url_for('download', file_id=f.id) }}">{{ f.orig_name }}</a></td>
+          <td>{{ f.owner }}</td>
+          <td>{{ (f.size / 1024) | round(1) }} KB</td>
+          <td><a href="{{ url_for('inspect_file', file_id=f.id) }}">Plain vs cipher</a></td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>Nothing has been shared with you.</p>
+  {% endif %}
+{% endblock %}

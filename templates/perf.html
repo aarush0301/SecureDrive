@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block body %}
+<a class="back-link" href="{{ url_for('home') }}">{{ icon('arrow-left') }} Back to my files</a>
+<div class="page-heading"><div><h1>Encryption performance</h1><p>AES-256-GCM encryption and decryption, measured live on this server.</p></div></div>
+<div class="measurement-note">{{ icon('info') }}<span>Median of 3 runs per size, using random data.</span></div>
+<section class="panel"><div class="panel-heading"><h2>Benchmark results</h2><span class="algorithm-label">AES-256-GCM</span></div><p class="table-hint">Scroll horizontally for all measurements. {{ icon('arrow-right') }}</p><div class="table-scroll" role="region" aria-label="Encryption benchmark results" tabindex="0"><table class="numeric-table"><thead><tr><th scope="col">Size (MB)</th><th scope="col">Encrypt (ms)</th><th scope="col">Decrypt (ms)</th><th scope="col">Encrypt (MB/s)</th><th scope="col">Decrypt (MB/s)</th></tr></thead><tbody>
+{% for r in rows %}<tr><td>{{ r.mb }}</td><td>{{ '%.2f' % r.enc_ms }}</td><td>{{ '%.2f' % r.dec_ms }}</td><td>{{ '%.1f' % r.enc_mbps }}</td><td>{{ '%.1f' % r.dec_mbps }}</td></tr>{% endfor %}
+</tbody></table></div></section>
+<h2 class="section-title">Performance graphs</h2>
+<div class="chart-grid">
+  <section class="panel chart-panel" aria-label="Time versus data size">
+    <p class="chart-hint">Scroll horizontally to explore the full graph. {{ icon('arrow-right') }}</p>
+    <div class="chart-scroll" role="region" tabindex="0" aria-label="Encryption and decryption time graph; exact values are in the benchmark table above">{{ chart_time | replace('<svg ', '<svg viewBox="0 0 470 270" ') | safe }}</div>
+  </section>
+  <section class="panel chart-panel" aria-label="Speed versus data size">
+    <p class="chart-hint">Scroll horizontally to explore the full graph. {{ icon('arrow-right') }}</p>
+    <div class="chart-scroll" role="region" tabindex="0" aria-label="Encryption and decryption speed graph; exact values are in the benchmark table above">{{ chart_speed | replace('<svg ', '<svg viewBox="0 0 470 270" ') | safe }}</div>
+  </section>
+</div>
+<p class="field-help explanation">Time grows roughly in proportion to size; speed stays roughly flat. That is the cost of security: encryption adds a small, predictable per-byte cost.</p>
+{% endblock %}

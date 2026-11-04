@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block body %}
+  <p><a href="{{ url_for('home') }}">&larr; Back to my files</a></p>
+  <h2>Inspect: {{ f.orig_name }}</h2>
+  <p>Size {{ size }} bytes &middot; stored encrypted on disk as {{ blob_size }} bytes
+     (12-byte nonce + 16-byte tag + ciphertext)</p>
+
+  <h3>1. Plaintext vs ciphertext</h3>
+  <table border="1" cellpadding="8" style="vertical-align: top;">
+    <tr><th>Plaintext (original)</th><th>Ciphertext (what is stored on disk)</th></tr>
+    <tr>
+      <td valign="top">
+        {% if text_preview is not none %}
+          <b>Text:</b><pre style="white-space: pre-wrap; max-width: 420px;">{{ text_preview }}</pre>
+        {% elif image_uri %}
+          <b>Image:</b><br><img src="{{ image_uri }}" style="max-width: 320px; max-height: 240px;">
+        {% else %}
+          <i>Binary file (.{{ ext }}): shown as bytes below.</i>
+        {% endif %}
+        <p><b>First 96 bytes (hex):</b></p>
+        <pre>{{ plain_hex }}</pre>
+      </td>
+      <td valign="top">
+        <b>Looks like random noise:</b><br>
+        <canvas id="noise" width="128" height="128"
+                style="width: 256px; image-rendering: pixelated; border: 1px solid #999;"
+                data-b64="{{ cipher_b64 }}"></canvas>
+        <p><b>First 96 bytes (hex):</b></p>
+        <pre>{{ cipher_hex }}</pre>
+        <p><b>Nonce:</b> <code>{{ nonce }}</code><br>
+           <b>Auth tag:</b> <code>{{ tag }}</code></p>
+      </td>
+    </tr>
+  </table>
+  <p><small>The canvas draws the first 16 KB of ciphertext as grey pixels (one byte = one pixel).
+     Good encryption gives uniform noise with no visible pattern.</small></p>
+
+  <h3>2. Performance of this file</h3>
+  <table border="1" cellpadding="6">
+    <tr><th></th><th>Time</th><th>Speed</th></tr>
+    <tr><td>Encrypt (at upload)</td>
+        <td>{% if f.enc_ms is not none %}{{ '%.3f' % f.enc_ms }} ms{% else %}-{% endif %}</td>
+        <td>{% if enc_mbps %}{{ '%.1f' % enc_mbps }} MB/s{% else %}-{% endif %}</td></tr>
+    <tr><td>Decrypt (just now)</td><td>{{ '%.3f' % dec_ms }} ms</td><td>{{ '%.1f' % dec_mbps }} MB/s</td></tr>
+  </table>
+  <p><a href="{{ url_for('perf') }}">See the full performance graph</a></p>
+
+  <h3>3. Hash (SHA-256)</h3>
+  <table border="1" cellpadding="6">
+    <tr><td>Stored at upload</td><td><code>{{ h.stored }}</code></td></tr>
+    <tr><td>Computed now</td><td><code>{{ h.digest }}</code> ({{ '%.3f' % h.hash_ms }} ms)</td></tr>
+    <tr><td>Match?</td><td><b style="color: {{ 'green' if h.match else 'red' }};">{{ 'YES - file unchanged' if h.match else 'NO - file changed' }}</b></td></tr>
+    <tr><td>Digest after flipping 1 input bit</td><td><code>{{ h.flipped_digest }}</code><br>
+        {{ '%.1f' % h.changed_pct }}% of digest bits changed (ideal ~50%) &rarr; second pre-image resistance</td></tr>
+  </table>
+
+  <h3>4. Digital signature (Ed25519)</h3>
+  <table border="1" cellpadding="6">
+    <tr><td>Stored signature</td><td><code style="word-break: break-all;">{{ f.signature or 'none (uploaded before signing was added)' }}</code></td></tr>
+    <tr><td>Signing time (at upload)</td><td>{% if f.sign_ms is not none %}{{ '%.3f' % f.sign_ms }} ms{% else %}-{% endif %}</td></tr>
+    <tr><td>Verification now</td><td><b style="color: {{ 'green' if sig_ok else 'red' }};">{{ 'VALID' if sig_ok else 'INVALID / missing' }}</b> ({{ '%.3f' % ver_ms }} ms)</td></tr>
+    <tr><td>If the hash were altered</td><td>{{ 'VALID (bad!)' if tamper_ok else 'INVALID - tampering would be detected' }}</td></tr>
+  </table>
+
+  <h3>5. Avalanche, confusion and diffusion (measured on this file and its key)</h3>
+  <table border="1" cellpadding="6">
+    <tr><th>Test</th><th>Bit-level %</th><th>Char-level %</th></tr>
+    {% for name, b, c in aval %}
+      <tr><td>{{ name }}</td><td>{{ '%.2f' % b }}</td><td>{{ '%.2f' % c }}</td></tr>
+    {% endfor %}
+  </table>
+  <p><small>Ideal: about 50% bit-level and close to 100% char-level. Row D is low because GCM is
+     counter mode: one plaintext bit flips exactly one ciphertext bit (a property of the mode,
+     not a weakness of AES). Char-level tops out near 99.6% because a random byte matches by
+     chance 1 time in 256.</small></p>
+
+  <script>
+    (function () {
+      var c = document.getElementById("noise");
+      var raw = atob(c.dataset.b64), ctx = c.getContext("2d");
+      var rows = Math.max(1, Math.min(128, Math.ceil(raw.length / 128)));
+      c.height = rows; c.style.height = (rows * 2) + "px";
+      var img = ctx.createImageData(128, rows);
+      for (var i = 0; i < 128 * rows; i++) {
+        var v = i < raw.length ? raw.charCodeAt(i) : 0;
+        img.data[i * 4] = img.data[i * 4 + 1] = img.data[i * 4 + 2] = v;
+        img.data[i * 4 + 3] = 255;
+      }
+      ctx.putImageData(img, 0, 0);
+    })();
+  </script>
+{% endblock %}

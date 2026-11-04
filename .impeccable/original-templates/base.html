@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SecureDrive</title>
+</head>
+<body>
+  <h1> SecureDrive</h1>
+  {% for message in get_flashed_messages() %}
+    <p style="color: darkred;"><b>{{ message }}</b></p>
+  {% endfor %}
+  {% block body %}{% endblock %}
+</body>
+</html>

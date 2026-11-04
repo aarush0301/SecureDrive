@@ -1,0 +1,39 @@
+{% from "ui.html" import icon %}
+{% set auth_page = request.endpoint in ['login', 'register'] %}
+{% set page_names = {'home': 'My files', 'audit': 'Audit trail', 'lab': 'Crypto Lab', 'perf': 'Performance', 'inspect_file': 'File inspection', 'login': 'Log in', 'register': 'Create account'} %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#13243b">
+  <title>{{ page_names.get(request.endpoint, 'Request blocked') }} · SecureDrive</title>
+  <link rel="icon" href="{{ url_for('static', filename='shield.svg') }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}">
+</head>
+<body class="{{ 'auth-page' if auth_page else 'workspace' }}">
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  {% if not auth_page %}
+  <aside class="sidebar" aria-label="Workspace navigation">
+    <a class="brand" href="{{ url_for('home') }}">{{ icon('shield') }}<span>SecureDrive<span class="brand-caption">Encrypted file workspace</span></span></a>
+    <nav class="main-nav" aria-label="Main navigation">
+      {% for endpoint, label, symbol in [('home', 'My files', 'folder'), ('audit', 'Audit trail', 'activity'), ('lab', 'Crypto Lab', 'flask'), ('perf', 'Performance', 'chart')] %}
+      <a href="{{ url_for(endpoint) }}" class="nav-link {{ 'is-active' if request.endpoint == endpoint or (endpoint == 'home' and request.endpoint == 'inspect_file') else '' }}" {% if request.endpoint == endpoint %}aria-current="page"{% endif %}>{{ icon(symbol) }}<span>{{ label }}</span>{% if request.endpoint == endpoint %}<span class="nav-marker" aria-hidden="true"></span>{% endif %}</a>
+      {% endfor %}
+    </nav>
+    <div class="sidebar-note">{{ icon('shield-check') }}<strong>Security you can inspect.</strong><p>Explore the encryption, fingerprints, and signatures behind your files.</p><a href="{{ url_for('lab') }}">Open Crypto Lab {{ icon('arrow-right') }}</a></div>
+    {% if session.get('uid') %}
+    <div class="account"><span class="avatar" aria-hidden="true">{{ session.get('username', '?')[:1] | upper }}</span><div class="account-name"><strong>{{ session.get('username') }}</strong><span>Your workspace</span></div><form method="post" action="{{ url_for('logout') }}"><input type="hidden" name="csrf" value="{{ csrf_token }}"><button class="logout-button" title="Log out" aria-label="Log out">{{ icon('logout') }}</button></form></div>
+    {% endif %}
+  </aside>
+  {% endif %}
+  <div class="{{ 'auth-layout' if auth_page else 'workspace-layout' }}">
+    {% if not auth_page %}<header class="topbar"><div class="breadcrumb"><span>Workspace</span>{{ icon('chevron-right') }}<span>{{ page_names.get(request.endpoint, 'Request blocked') }}</span></div><span class="algorithm-label">{{ icon('lock') }} AES-256-GCM</span></header>{% endif %}
+    <main id="main-content" class="{{ 'auth-main' if auth_page else 'main-content' }}" tabindex="-1">
+      {% for message in get_flashed_messages() %}<div class="flash-message" role="status">{{ icon('info') }}<span>{{ message }}</span></div>{% endfor %}
+      {% block body %}{% endblock %}
+    </main>
+    {% if not auth_page %}<footer class="workspace-footer"><span>SecureDrive <span class="footer-divider">/</span> Cryptography in practice</span><span>{{ icon('lock') }} Encrypted at rest</span></footer>{% endif %}
+  </div>
+</body>
+</html>

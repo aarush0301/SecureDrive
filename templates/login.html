@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block body %}
+{% include "auth_intro.html" %}
+<section class="auth-form-region"><div class="auth-form-content"><span class="auth-form-icon">{{ icon('lock') }}</span><h1>Welcome back.</h1><p class="auth-subtitle">Log in to your SecureDrive workspace.</p>
+<form method="post" class="auth-form"><input type="hidden" name="csrf" value="{{ csrf_token }}"><div class="field"><label for="username">Username</label><input id="username" name="username" placeholder="Enter your username" autocomplete="username" required></div><div class="field"><label for="password">Password</label><input id="password" name="password" type="password" placeholder="Enter your password" autocomplete="current-password" required></div><button class="button primary">Log in {{ icon('arrow-right') }}</button></form>
+<p class="auth-switch">No account? <a href="{{ url_for('register') }}">Create an account</a></p><p class="auth-footnote">{{ icon('shield') }} Your files are encrypted before they are stored.</p></div></section>
+{% endblock %}

@@ -1,0 +1,200 @@
+[
+  {
+    "name": "login-desktop",
+    "title": "Log in · SecureDrive",
+    "viewport": 1440,
+    "width": 1440,
+    "h1": "Welcome back.",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "login-mobile",
+    "title": "Log in · SecureDrive",
+    "viewport": 390,
+    "width": 390,
+    "h1": "Welcome back.",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "register-desktop",
+    "title": "Create account · SecureDrive",
+    "viewport": 1440,
+    "width": 1440,
+    "h1": "Create your account.",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "register-mobile",
+    "title": "Create account · SecureDrive",
+    "viewport": 390,
+    "width": 390,
+    "h1": "Create your account.",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "empty-desktop",
+    "title": "My files · SecureDrive",
+    "viewport": 1440,
+    "width": 1440,
+    "h1": "My files",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "empty-mobile",
+    "title": "My files · SecureDrive",
+    "viewport": 390,
+    "width": 390,
+    "h1": "My files",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "desktop",
+    "title": "My files · SecureDrive",
+    "viewport": 1440,
+    "width": 1440,
+    "h1": "My files",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "mobile",
+    "title": "My files · SecureDrive",
+    "viewport": 390,
+    "width": 390,
+    "h1": "My files",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "tablet",
+    "title": "My files · SecureDrive",
+    "viewport": 768,
+    "width": 768,
+    "h1": "My files",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "desktop-1280",
+    "title": "My files · SecureDrive",
+    "viewport": 1280,
+    "width": 1280,
+    "h1": "My files",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "audit-desktop",
+    "title": "Audit trail · SecureDrive",
+    "viewport": 1440,
+    "width": 1440,
+    "h1": "Your audit trail",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "audit-mobile",
+    "title": "Audit trail · SecureDrive",
+    "viewport": 390,
+    "width": 390,
+    "h1": "Your audit trail",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "inspect-desktop",
+    "title": "File inspection · SecureDrive",
+    "viewport": 1440,
+    "width": 1440,
+    "h1": "encryption-notes.txt",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "inspect-mobile",
+    "title": "File inspection · SecureDrive",
+    "viewport": 390,
+    "width": 390,
+    "h1": "encryption-notes.txt",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "performance-desktop",
+    "title": "Performance · SecureDrive",
+    "viewport": 1440,
+    "width": 1440,
+    "h1": "Encryption performance",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "performance-mobile",
+    "title": "Performance · SecureDrive",
+    "viewport": 390,
+    "width": 390,
+    "h1": "Encryption performance",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "lab-desktop",
+    "title": "Crypto Lab · SecureDrive",
+    "viewport": 1440,
+    "width": 1440,
+    "h1": "Crypto Lab",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "lab-mobile",
+    "title": "Crypto Lab · SecureDrive",
+    "viewport": 390,
+    "width": 390,
+    "h1": "Crypto Lab",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "lab-result-desktop",
+    "title": "Crypto Lab · SecureDrive",
+    "viewport": 1440,
+    "width": 1440,
+    "h1": "Crypto Lab",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "lab-result-mobile",
+    "title": "Crypto Lab · SecureDrive",
+    "viewport": 390,
+    "width": 390,
+    "h1": "Crypto Lab",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "lab-tamper-desktop",
+    "title": "Crypto Lab · SecureDrive",
+    "viewport": 1440,
+    "width": 1440,
+    "h1": "Crypto Lab",
+    "missingLabels": [],
+    "brokenImages": []
+  },
+  {
+    "name": "lab-tamper-mobile",
+    "title": "Crypto Lab · SecureDrive",
+    "viewport": 390,
+    "width": 390,
+    "h1": "Crypto Lab",
+    "missingLabels": [],
+    "brokenImages": []
+  }
+]

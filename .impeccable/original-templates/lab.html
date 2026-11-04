@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block body %}
+  <p><a href="{{ url_for('home') }}">&larr; Back to my files</a></p>
+  <h2>Crypto Lab: text encryption</h2>
+  <p>Type any text. A fresh random 256-bit key is used, nothing is saved.</p>
+  <form method="post">
+    <input type="hidden" name="csrf" value="{{ csrf_token }}">
+    <textarea name="text" rows="4" cols="60" required>{{ r.text if r else 'Hello professor, this is SecureDrive.' }}</textarea><br>
+    <label><input type="checkbox" name="tamper" value="1" {{ 'checked' if r and r.tamper else '' }}>
+      Flip one ciphertext bit before decrypting (simulate an attacker)</label><br>
+    <button>Encrypt, decrypt and analyse</button>
+  </form>
+
+  {% if r %}
+    <h3>1. Plaintext vs ciphertext</h3>
+    <table border="1" cellpadding="6">
+      <tr><td>Plaintext</td><td><pre style="white-space: pre-wrap;">{{ r.text }}</pre></td></tr>
+      <tr><td>Ciphertext (hex)</td><td><code style="word-break: break-all;">{{ r.ct_hex }}</code></td></tr>
+      <tr><td>Ciphertext (base64)</td><td><code style="word-break: break-all;">{{ r.ct_b64 }}</code></td></tr>
+      <tr><td>Nonce</td><td><code>{{ r.nonce }}</code></td></tr>
+      <tr><td>Auth tag</td><td><code>{{ r.tag }}</code></td></tr>
+      <tr><td>Decrypted</td><td>
+        {% if r.ok %}<b style="color: green;">OK</b><pre style="white-space: pre-wrap;">{{ r.back }}</pre>
+        {% else %}<b style="color: red;">REJECTED - authentication tag check failed, nothing released</b>{% endif %}
+      </td></tr>
+      <tr><td>Encrypt / decrypt time</td><td>{{ '%.3f' % r.enc_ms }} ms / {{ '%.3f' % r.dec_ms }} ms ({{ r.size }} bytes)</td></tr>
+    </table>
+
+    <h3>2. Hash (SHA-256)</h3>
+    <table border="1" cellpadding="6">
+      <tr><td>Digest</td><td><code>{{ r.h.digest }}</code> ({{ '%.3f' % r.h.hash_ms }} ms)</td></tr>
+      <tr><td>After flipping 1 input bit</td><td><code>{{ r.h.flipped_digest }}</code><br>
+        {{ '%.1f' % r.h.changed_pct }}% of bits changed (ideal ~50%)</td></tr>
+    </table>
+
+    <h3>3. Digital signature (Ed25519)</h3>
+    <table border="1" cellpadding="6">
+      <tr><td>Signature</td><td><code style="word-break: break-all;">{{ r.sig }}</code></td></tr>
+      <tr><td>Generation time</td><td>{{ '%.3f' % r.sign_ms }} ms</td></tr>
+      <tr><td>Verification</td><td><b style="color: {{ 'green' if r.sig_ok else 'red' }};">{{ 'VALID' if r.sig_ok else 'INVALID' }}</b> ({{ '%.3f' % r.ver_ms }} ms)</td></tr>
+    </table>
+
+    <h3>4. Avalanche, confusion and diffusion</h3>
+    <table border="1" cellpadding="6">
+      <tr><th>Test</th><th>Bit-level %</th><th>Char-level %</th></tr>
+      {% for name, b, c in r.aval %}
+        <tr><td>{{ name }}</td><td>{{ '%.2f' % b }}</td><td>{{ '%.2f' % c }}</td></tr>
+      {% endfor %}
+    </table>
+    <p><small>Ideal: about 50% bit-level, close to 100% char-level (about 99.6% in practice).</small></p>
+  {% endif %}
+{% endblock %}

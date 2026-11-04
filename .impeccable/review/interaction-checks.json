@@ -1,0 +1,14 @@
+[
+  "Native file form uploads and renders server feedback",
+  "Download returns original content",
+  "Share form submits unchanged recipient field and CSRF token",
+  "Cancel preserves the file",
+  "Confirmed deletion removes only the chosen test file",
+  "Mobile file table scrolls with keyboard focus",
+  "Keyboard focus indicator is visible",
+  "Logout remains a CSRF-protected POST and returns to login",
+  "Login failure is readable",
+  "Registration preserves existing server-side validation",
+  "Valid native login form opens the workspace",
+  "Dashboard text contrast meets WCAG AA thresholds: []"
+]

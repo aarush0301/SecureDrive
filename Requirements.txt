@@ -1,0 +1,6 @@
+flask
+pycryptodome
+bcrypt
+cryptography
+requests
+pyshark
